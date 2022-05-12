@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherit_account_analytic_line" model="ir.ui.view">
+        <field name="name">Inherit Hr Employee</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="replace">
+                <tree editable="top" string="Timesheet Activities" sample="1">
+                    <field name="date"/>
+                    <field name="month"/>
+                    <field name="employee_id" invisible="1"/>
+                    <field name="project_id" required="1" options="{'no_create_edit': True}" context="{'form_view_ref': 'project.project_project_view_form_simplified',}"/>
+                    <field name="task_id" optional="show" options="{'no_create_edit': True, 'no_open': True}" widget="task_with_hours" context="{'default_project_id': project_id}" domain="[('project_id', '=', project_id)]"/>
+<!--                    <field name="task_id" optional="show" options="{'no_create_edit': True, 'no_open': True}" widget="task_with_hours"/>-->
+                    <field name="name" optional="show" required="0"/>
+                    <field name="weekend_or_holiday" widget="boolean"/>
+                    <field name="unit_amount" optional="show" widget="timesheet_uom" sum="Total" decoration-danger="unit_amount &gt; 24"/>
+                    <field name="company_id" invisible="1"/>
+                    <field name="user_id"/>
+                    <field name="overtime_amt"/>
+                    <field name="normal_hour" invisible="1"/>
+                </tree>
+            </xpath>
+        </field>
+    </record>
+</odoo>

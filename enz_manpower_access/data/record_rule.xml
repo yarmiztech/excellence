@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <record id = "project_task_employee" model = "ir.rule">
+   <field name = "name"> Employee can only see his / her Task </field>
+   <field name = "model_id" ref = "model_project_task" />
+   <field name = "domain_force"> [('employee_id.user_id', '=', user.ids)] </field>
+        <field name="groups" eval="[(4, ref('employee_access_group'))]" />
+
+</record>
+
+    <record id = "inherit_hr_payslip" model = "ir.rule">
+   <field name = "name"> Employee can only see his / her Payslip </field>
+   <field name = "model_id" ref = "model_hr_payslip" />
+        <field name = "perm_read" eval = "True" />
+   <field name = "perm_write" eval = "False" />
+   <field name = "perm_create" eval = "False" />
+   <field name = "perm_unlink" eval = "False" />
+   <field name = "domain_force"> [('employee_id.user_id', '=', user.ids)] </field>
+<!--                <field name="groups" eval="[(4, ref('enz_manpower_access.employee_access_group'))]" />-->
+
+</record>
+</odoo>

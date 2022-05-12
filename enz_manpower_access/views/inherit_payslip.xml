@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherit_hr_payslip_enz_manpower_access" model="ir.ui.view">
+        <field name="name">Inherit Hr Payslip</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="om_hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='payable_amount']" position="after">
+                <field name="employee" widget="boolean"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="inherit_hr_payslip_inherit_header" model="ir.ui.view">
+        <field name="name">Inherit Hr Payslip</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="om_hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+                                        <xpath expr="//header" position="replace">
+                    <header>
+<!--                        <button string="Confirm" name="action_payslip_done" type="object" states="draft" class="oe_highlight"/>-->
+                        <button string="Confirm" name="action_payslip_done" type="object" class="oe_highlight" attrs="{'invisible': ['|',('employee','!=',False),('state','!=','draft')]}"/>
+                        <button string="Refund" name="refund_sheet" states="confirm,done" type="object" />
+                        <button string="Set to Draft" name="action_payslip_draft" type="object" states="cancel"/>
+                        <button string="Compute Sheet" name="compute_sheet" type="object" class="oe_highlight" attrs="{'invisible': ['|',('employee','!=',False),('state','!=','draft')]}"/>
+<!--                        <button string="Cancel Payslip" name="action_payslip_cancel" type="object" states="draft,hr_check,confirm,verify"/>-->
+                        <button string="Cancel Payslip" name="action_payslip_cancel" type="object" attrs="{'invisible': [('employee','!=',False)]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="payslip_form_remove_buttons" model="ir.ui.view">
+    <field name="name">hr.payslip</field>
+    <field name="model">hr.payslip</field>
+    <field name="inherit_id" ref="om_hr_payroll.view_hr_payslip_form"/>
+    <field name="groups_id" eval="[(4,ref('enz_manpower_access.employee_access_group'))]"/>
+    <field name="arch" type="xml">
+    <xpath expr="/form" position="attributes">
+        <attribute name="create">false</attribute>
+        <attribute name="edit">false</attribute>
+        <attribute name="delete">false</attribute>
+    </xpath>
+</field>
+</record>
+</odoo>

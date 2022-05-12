@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherit_hr_employee_hr_timesheet" model="ir.ui.view">
+        <field name="name">Inherit Hr Employee</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_employee_view_form_inherit_timesheet"/>
+        <field name="arch" type="xml">
+                        <xpath expr="//field[@name='timesheet_cost']" position="replace">
+                            <field name="timesheet_cost"/>
+                        </xpath>
+        </field>
+    </record>
+    <record id="inherit_hr_payslip_excellence_new_structure" model="ir.ui.view">
+        <field name="name">Inherit Hr Payslip</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="excellence_new_structure.inherit_payslip_form_new"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='income_amount']" position="replace">
+                <field name="income_amount"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="inherit_hr_payslip_om_hr_payroll" model="ir.ui.view">
+        <field name="name">Inherit Hr Payslip</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="om_hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payable_amount']" position="after">
+                <field name="other_deduction"/>
+                <field name="currency_id"/>
+                <field name="advance_payment"/>
+
+            </xpath>
+        </field>
+    </record>
+    <record id="inherit_hr_payslip_excellance_payslip_inherit" model="ir.ui.view">
+        <field name="name">Inherit Hr Payslip</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="excellance_payslip_inherit.inherit_payslip_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='total_overtime_previous']" position="after">
+                <field name="remarks"/>
+            </xpath>
+        </field>
+    </record>
+
+
+<!--    <record id="payslip_form_remove_buttons" model="ir.ui.view">-->
+<!--    <field name="name">hr.payslip</field>-->
+<!--    <field name="model">hr.payslip</field>-->
+<!--    <field name="inherit_id" ref="om_hr_payroll.view_hr_payslip_form"/>-->
+<!--    <field name="groups_id" eval="[(4,ref('enz_manpower_access.employee_access_group'))]"/>-->
+<!--    <field name="arch" type="xml">-->
+<!--    <xpath expr="/form" position="attributes">-->
+<!--        <attribute name="create">false</attribute>-->
+<!--        <attribute name="edit">false</attribute>-->
+<!--        <attribute name="delete">false</attribute>-->
+<!--    </xpath>-->
+<!--</field>-->
+<!--</record>-->
+
+
+
+</odoo>

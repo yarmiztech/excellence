@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem name="EnzManpower" id="enz_manpower.enz_manpower_main" sequence="5" groups="enz_manpower_access.manager_access_group"/>
+    <menuitem name="Configuration" parent="enz_manpower.enz_manpower_main" groups="enz_manpower_access.manager_access_group" id="enz_manpower.enzmanpower_config" sequence="10"/>
+    <menuitem name="Works" parent="enz_manpower.enzmanpower_config" id="enz_manpower_works_main" sequence="1" action="enz_manpower.enz_manpower_works_action" groups="enz_manpower_access.manager_access_group"/>
+
+    <menuitem name="CRM"
+              id="enz_manpower.extenalmanpower_crm" sequence="1" parent="enz_manpower.enz_manpower_main" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="My Pipeline"
+              id="enz_manpower.extenalmanpower_mypipeline" sequence="1"
+              parent="enz_manpower.extenalmanpower_crm" action="crm.action_your_pipeline" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Project"
+              id="enz_manpower.extenalmanpower_projectmain" sequence="2" parent="enz_manpower.enz_manpower_main" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Employee"
+              id="enz_manpower.extenalmanpower_empmain" sequence="3" parent="enz_manpower.enz_manpower_main" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Contacts"
+              id="enz_manpower.extenalmanpower_empcontacts" sequence="1" parent="enz_manpower.extenalmanpower_empmain" action="contacts.action_contacts" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Employee"
+              id="enz_manpower.extenalmanpower_emp" sequence="2" parent="enz_manpower.extenalmanpower_empmain" action="hr.open_view_employee_list_my" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Contracts"
+              id="enz_manpower.extenalmanpower_empcon" sequence="3" parent="enz_manpower.extenalmanpower_empmain" action="hr_contract.action_hr_contract" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Overview"
+              id="enz_manpower.extenalmanpower_projectview" sequence="1"
+              parent="enz_manpower.extenalmanpower_projectmain" action="project.open_view_project_all" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Sales"
+              id="enz_manpower.extenalmanpower_salemain" sequence="4" parent="enz_manpower.enz_manpower_main" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Quotation"
+              id="enz_manpower.extenalmanpower_saleorders" sequence="1" parent="enz_manpower.extenalmanpower_salemain" action="sale.action_quotations_with_onboarding" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Orders"
+              id="enz_manpower.extenalmanpower_salequo" sequence="2" parent="enz_manpower.extenalmanpower_salemain" action="sale.action_orders" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Customers"
+              id="enz_manpower.extenalmanpower_salecus" sequence="3" parent="enz_manpower.extenalmanpower_salemain" action="account.res_partner_action_customer" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Project"
+              id="enz_manpower.extenalmanpower_project" sequence="2"
+              parent="enz_manpower.extenalmanpower_projectmain" action="project.open_view_project_all_config" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Tasks"
+              id="enz_manpower.extenalmanpower_tasks" sequence="3"
+              parent="enz_manpower.extenalmanpower_projectmain" action="project.action_view_task" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Payroll/Payment"
+              id="enz_manpower.extenalmanpower_payrollmain" sequence="8" parent="enz_manpower.enz_manpower_main" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Payroll"
+              id="enz_manpower.extenalmanpower_paymain" sequence="1" parent="enz_manpower.extenalmanpower_payrollmain" groups="enz_manpower_access.manager_access_group"
+              action="om_hr_payroll.action_view_hr_payslip_form"/>
+    <menuitem name="External Payment"
+              id="enz_manpower.extenalmanpower_expaymain" sequence="3" parent="enz_manpower.extenalmanpower_payrollmain" groups="enz_manpower_access.manager_access_group"
+              action="enz_manpower.extenalmanpower_expaymain_action"
+    />
+
+
+    <menuitem name="Purchase"
+              id="enz_manpower.extenalmanpower_purchasemain" sequence="5" parent="enz_manpower.enz_manpower_main" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="RFQ"
+              id="enz_manpower.extenalmanpower_purchasequo" sequence="1" parent="enz_manpower.extenalmanpower_purchasemain" action="purchase.purchase_rfq" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Purchase Orders"
+              id="enz_manpower.extenalmanpower_purchaseorders" sequence="2" parent="enz_manpower.extenalmanpower_purchasemain" action="purchase.purchase_form_action" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Vendors"
+              id="enz_manpower.extenalmanpower_purchasevendors" sequence="3" parent="enz_manpower.extenalmanpower_purchasemain" action="account.res_partner_action_supplier" groups="enz_manpower_access.manager_access_group"
+    />
+
+    <menuitem name="Expense"
+              id="enz_manpower.extenalmanpower_expensemain" sequence="6" parent="enz_manpower.enz_manpower_main" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="My Expense"
+              id="enz_manpower.extenalmanpower_expense" sequence="1" parent="enz_manpower.extenalmanpower_expensemain" action="hr_expense.hr_expense_actions_my_unsubmitted" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="My Reports"
+              id="enz_manpower.extenalmanpower_expenserep" sequence="2" parent="enz_manpower.extenalmanpower_expensemain" action="hr_expense.action_hr_expense_sheet_my_all" groups="enz_manpower_access.manager_access_group"
+    />
+    <menuitem name="Assign Employee"
+              id="enz_manpower.extenalmanpower_assignemp" sequence="4"
+              parent="enz_manpower.extenalmanpower_projectmain" action="enz_manpower.action_assign_employee" groups="enz_manpower_access.manager_access_group"
+    />
+
+     <menuitem name="Reports"
+              id="enz_manpower.enzcontract_reports" sequence="9"
+              parent="enz_manpower.enz_manpower_main" groups="enz_manpower_access.manager_access_group"
+    />
+
+    <menuitem name="Project Report"
+              id="enz_manpower.enzcontractprojectadv" sequence="3"
+              parent="enz_manpower.enzcontract_reports" action="enz_manpower.enzcontractprojectadv_action" groups="enz_manpower_access.manager_access_group"
+    />
+
+</odoo>
